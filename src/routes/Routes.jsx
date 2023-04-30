@@ -40,21 +40,21 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <Category></Category>,
-                loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://read-news-server.vercel.app/categories/${params.id}`)
             }
         ]
-    }, 
+    },
     {
-        path: 'news', 
+        path: 'news',
         element: <NewsLayout></NewsLayout>,
         children: [
             {
                 path: ':id',
                 element: <PrivateRoute><News></News></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://read-news-server.vercel.app/news/${params.id}`)
             }
         ]
-    }, 
+    },
     {
         path: 'login',
         element: <LoginLayout></LoginLayout>,
@@ -69,10 +69,10 @@ const router = createBrowserRouter([
         path: 'register',
         element: <LoginLayout></LoginLayout>,
         children: [
-        {
-            path: '/register',
-            element: <Register></Register>
-        }
+            {
+                path: '/register',
+                element: <Register></Register>
+            }
         ]
     }
 ])
