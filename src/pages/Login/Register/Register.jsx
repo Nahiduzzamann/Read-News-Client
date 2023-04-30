@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
-    const handleRegister = event =>{
+    const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -17,13 +17,13 @@ const Register = () => {
 
         // console.log(name, photo, email, password);
         createUser(email, password)
-        .then(result =>{
-            const createdUser = result.user;
-            console.log(createdUser);
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <Container className='w-25 mx-auto'>
@@ -48,7 +48,10 @@ const Register = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" name="accept" label="Accept Terms and Conditions" />
+                    <Form.Check 
+                    type="checkbox" 
+                    name="accept" 
+                    label={<>Accept <Link to='/terms'>Terms and Conditions</Link></>} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Register
